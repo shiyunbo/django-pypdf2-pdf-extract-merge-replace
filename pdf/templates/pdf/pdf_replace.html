@@ -1,0 +1,18 @@
+{% extends "pdf/base.html" %}
+
+{% block content %}
+<p></p><a href="{% url 'pdf:pdf_single_page_extract' %}">PDF Singe Page Extract(单页提取)</a>
+| <a href="{% url 'pdf:pdf_range_extract' %}">
+    PDF Page Range Extract(页面范围提取)</a> | <a href="{% url 'pdf:pdf_merge' %}">PDF Merge(合并)</a> |
+<a href="{% url 'pdf:pdf_replace' %}">
+    PDF Replace(替换)</a></p>
+
+
+<h3>PDF Replace(替换)</h3>
+<p>一次仅能替换一个PDF页面。You can only replace 1 single page at a time.</p>
+<form method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+    {{ form.as_p }}
+     <button type="submit" class="btn btn-primary">Replace</button>
+</form>
+
+{% endblock %}
